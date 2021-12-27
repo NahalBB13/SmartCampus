@@ -7,13 +7,16 @@ public class Student {
     private String studentFullName;
     private String studentNumber;
     private String studentPass;
-    //private ArrayList<Course> selectedCourseList = new ArrayList<Course>();
-    //private HashMap<Course, Double> passedCourses = new HashMap<Course, Double>();
+    private ArrayList<Course> selectedCourseList;
+    private HashMap<Course, Double> passedCourses;
 
-    public Student(String studentFullName, String studentNumber, String studentPass){
+    public Student(String studentFullName, String studentNumber, String studentPass,
+                   ArrayList<Course> selectedCourseList, HashMap<Course, Double> passedCourses){
         this.studentFullName = studentFullName;
         this.studentNumber = studentNumber;
         this.studentPass = studentPass;
+        this.selectedCourseList = selectedCourseList;
+        this.passedCourses = passedCourses;
     }
 
     public String getStudentFullName() {
@@ -40,8 +43,23 @@ public class Student {
         this.studentPass = studentPass;
     }
 
-    /*todo : add course class
-    public boolean courseAdmissibility(ArrayList<course> selectedCourseList){
+    public ArrayList<Course> getSelectedCourseList() {
+        return selectedCourseList;
+    }
+
+    public void setSelectedCourseList(ArrayList<Course> selectedCourseList) {
+        this.selectedCourseList = selectedCourseList;
+    }
+
+    public HashMap<Course, Double> getPassedCourses() {
+        return passedCourses;
+    }
+
+    public void setPassedCourses(HashMap<Course, Double> passedCourses) {
+        this.passedCourses = passedCourses;
+    }
+
+    public boolean courseAdmissibility(ArrayList<Course> selectedCourseList){
         return selectedCourseList.size() != 20;
     }
 
@@ -81,5 +99,4 @@ public class Student {
         }
         return sum/length;
     }
-     */
 }

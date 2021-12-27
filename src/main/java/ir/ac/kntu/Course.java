@@ -11,14 +11,15 @@ public class Course {
     private ArrayList<Student> courseStudentList;
     private ArrayList<Course> prerequisites;
 
-    //todo add professor class and a function to declare prerequisites of courses with the same name in the courseManagement class
+    //todo a function to declare prerequisites of courses with the same name in the courseManagement class
 
-    public Course (String courseName, String courseNumber, String presentationDay, String presentationTime,
-                   ArrayList<Student> courseStudentList, ArrayList<Course> prerequisites){
+    public Course(String courseName, String courseNumber, String presentationDay, String presentationTime,
+                  Professor courseProfessor, ArrayList<Student> courseStudentList, ArrayList<Course> prerequisites){
         this.courseName = courseName;
         this.courseNumber = courseNumber;
         this.presentationDay = presentationDay;
         this.presentationTime = presentationTime;
+        this.courseProfessor = courseProfessor;
         this.courseStudentList = courseStudentList;
         this.prerequisites = prerequisites;
     }
@@ -45,6 +46,14 @@ public class Course {
 
     public ArrayList<Course> getPrerequisites() {
         return prerequisites;
+    }
+
+    public Professor getCourseProfessor() {
+        return courseProfessor;
+    }
+
+    public void setCourseProfessor(Professor courseProfessor) {
+        this.courseProfessor = courseProfessor;
     }
 
     public void setCourseName(String courseName) {
