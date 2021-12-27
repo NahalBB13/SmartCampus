@@ -17,6 +17,8 @@ public class Admin {
         return password;
     }
 
+    // todo what if there are a lot of students would like to withdrawal? how to handle this?
+
     public void withdrawalApproval(Student student, Course course){
         if(student.getAverageScore() > 17){
             student.getSelectedCourseList().remove(course);
