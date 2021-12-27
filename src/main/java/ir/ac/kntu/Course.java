@@ -7,11 +7,11 @@ public class Course {
     private String courseNumber;
     private String presentationDay;
     private String presentationTime;
-    //private Professor courseProfessor;
+    private Professor courseProfessor;
     private ArrayList<Student> courseStudentList;
     private ArrayList<Course> prerequisites;
 
-    //todo add professor class and a function to declare prerequisites of courses with the same name
+    //todo add professor class and a function to declare prerequisites of courses with the same name in the courseManagement class
 
     public Course (String courseName, String courseNumber, String presentationDay, String presentationTime,
                    ArrayList<Student> courseStudentList, ArrayList<Course> prerequisites){
@@ -69,5 +69,9 @@ public class Course {
 
     public void setPrerequisites(ArrayList<Course> prerequisites) {
         this.prerequisites = prerequisites;
+    }
+
+    public boolean checkProfName(String professorName){
+        return professorName.equals(courseProfessor.getProfessorName());
     }
 }
