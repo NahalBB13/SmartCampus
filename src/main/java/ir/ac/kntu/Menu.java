@@ -46,24 +46,36 @@ public class Menu {
         System.out.print("\r\nPlease select your choice: ");
     }
 
-    public static void adjustmentsMenu(String storeType){
+    public static void adjustmentsMenu(String specifiedItem){
         System.out.println("***********************************");
-        System.out.println("1-Add a " + storeType);
-        System.out.println("2-Remove a " + storeType);
-        System.out.println("3-Make changes to a " + storeType);
+        System.out.println("1-Add a " + specifiedItem);
+        System.out.println("2-Remove a " + specifiedItem);
+        System.out.println("3-Make changes to a " + specifiedItem);
         System.out.println("4-Exit adjustments menu");
         System.out.println("***********************************");
         System.out.print("\r\nPlease select your choice: ");
     }
 
-
-    public static void fieldAdjustments(String storeType) {
+    public static void courseAdjustments() {
         System.out.println("***********************************");
-        System.out.println("1-change " + storeType + "'s name");
-        System.out.println("2-change " + storeType + "'s address");
-        System.out.println("3-change " + storeType + "'s rate");
-        System.out.println("4-change " + storeType + "'s score");
-        System.out.println("5-Exit field adjustment menu");
+        System.out.println("1-change course's name");
+        System.out.println("2-change course's number");
+        System.out.println("3-change course's prerequisites");
+        //todo u can say if one shall equal the latter you can chose not to acknowledge
+        System.out.println("4-change course's presentation time and day");
+        System.out.println("5-change course's students");
+        System.out.println("6-change course's professor");
+        System.out.println("7-Exit field adjustment menu");
+        System.out.println("***********************************");
+        System.out.print("\r\nPlease select your choice: ");
+    }
+    // for students and professors
+    public static void personnelAdjustments(String staffType) {
+        System.out.println("***********************************");
+        System.out.println("1-change " + staffType + "'s name");
+        System.out.println("2-change " + staffType + "'s number");
+        System.out.println("2-change " + staffType + "'s password");
+        System.out.println("3-Exit field adjustment menu");
         System.out.println("***********************************");
         System.out.print("\r\nPlease select your choice: ");
     }

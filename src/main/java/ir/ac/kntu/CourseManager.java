@@ -93,4 +93,34 @@ public class CourseManager {
             System.out.println("Course " + courseName + " Was successfully added");
         }
     }
+
+    public void removeCourse(ArrayList<Course> courseList){
+        System.out.println("Enter the name of the course you wish to remove from list");
+        String courseName = ScannerWrapper.getInstance().next();
+        if(searchForCourse(courseName) != null){
+            courseList.remove(searchForCourse(courseName));
+            System.out.println("Course " + courseName + " was successfully removed from list");
+        } else{
+            System.out.println("This course does not exist");
+        }
+    }
+
+    /* todo
+    public void changeCourseFields(int userIndex) {
+        switch(userIndex){
+            case 1:
+                changeCourseName();
+                break;
+            case 2:
+                changeCourseNumber();
+                break;
+            case 3:
+                changeCoursePrerequisites();
+                break;
+            default:
+                break;
+        }
+    }
+
+     */
 }
