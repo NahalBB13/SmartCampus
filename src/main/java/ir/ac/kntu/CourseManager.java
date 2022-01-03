@@ -8,6 +8,12 @@ public class CourseManager {
     private ArrayList<Student> studentList;
     private ArrayList<Professor> professorList;
 
+    public CourseManager(ArrayList<Course> courseList, ArrayList<Student> studentList, ArrayList<Professor> professorList) {
+        this.courseList = courseList;
+        this.studentList = studentList;
+        this.professorList = professorList;
+    }
+
     public ArrayList<Course> getCourseList() {
         return courseList;
     }

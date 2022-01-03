@@ -3,7 +3,11 @@ package ir.ac.kntu;
 import java.util.ArrayList;
 
 public class AdminManager {
-    private ArrayList<Admin> adminList = new ArrayList<>();
+    private ArrayList<Admin> adminList;
+
+    public AdminManager(ArrayList<Admin> adminList) {
+        this.adminList = adminList;
+    }
 
     public void setAdminList(ArrayList<Admin> adminList) {
         this.adminList = adminList;

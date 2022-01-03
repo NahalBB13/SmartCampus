@@ -24,7 +24,7 @@ public class Restaurant {
         if (option.equals("1")) {
             showBreakFastMenu();
         } else if (option.equals("2")) {
-            showLaunchMenu();
+            showLunchMenu();
         } else {
             System.out.println("incorrect Input");
             showMenu();
@@ -37,7 +37,7 @@ public class Restaurant {
         }
     }
 
-    public void showLaunchMenu() {
+    public void showLunchMenu() {
         System.out.println("1 - Food");
         System.out.println("2 - Salad");
         System.out.println("3 - Drink");
@@ -54,7 +54,7 @@ public class Restaurant {
                 break;
             default:
                 System.out.println("Incorrect Input");
-                showLaunchMenu();
+                showLunchMenu();
                 break;
         }
     }
