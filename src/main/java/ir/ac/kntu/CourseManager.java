@@ -99,7 +99,7 @@ public class CourseManager {
     public void addCourse(ArrayList<Course> courseList){
         System.out.println("Enter course Name");
         String courseName = ScannerWrapper.getInstance().next();
-        if(searchForCourse(courseName) != null){
+        if(checkCourseExistence(courseName)){
             System.out.println("Enter Course number");
             String courseNumber = ScannerWrapper.getInstance().next();
             System.out.println("Enter course presentation day");
@@ -155,18 +155,75 @@ public class CourseManager {
     }
 
     private void changeCourseStudents() {
+        System.out.println("Enter course Name");
+        String courseName = ScannerWrapper.getInstance().next();
+        if(checkCourseExistence(courseName)) {
+            Course course = searchForCourse(courseName);
+            System.out.println("Enter course Students");
+            ArrayList<Student> studentList = addStudentToCourses();
+            courseList.add(new Course(courseName, course.getCourseNumber(), course.getPresentationDay(), course.getPresentationTime(), course.getCourseProfessor(), studentList, course.getPrerequisites()));
+            courseList.remove(new Course(courseName, course.getCourseNumber(), course.getPresentationDay(), course.getPresentationTime(), course.getCourseProfessor(), course.getCourseStudentList(), course.getPrerequisites()));
+            System.out.println("Course " + courseName + "'s students were successfully added");
+        }
     }
 
     private void changeCoursePresentationFields() {
+        System.out.println("Enter course Name");
+        String courseName = ScannerWrapper.getInstance().next();
+        if(checkCourseExistence(courseName)) {
+            Course course = searchForCourse(courseName);
+            System.out.println("Enter course presentation day");
+            String presentationDay = ScannerWrapper.getInstance().next();
+            System.out.println("Enter Course presentation time (please follow this structure: startTime,finishTime)");
+            String presentationTime = ScannerWrapper.getInstance().next();
+            courseList.add(new Course(courseName, course.getCourseNumber(), presentationDay, presentationTime, course.getCourseProfessor(), studentList, course.getPrerequisites()));
+            courseList.remove(new Course(courseName, course.getCourseNumber(), course.getPresentationDay(), course.getPresentationTime(), course.getCourseProfessor(), course.getCourseStudentList(), course.getPrerequisites()));
+            System.out.println("Course " + courseName + "'s students were successfully added");
+
+        }
     }
 
     private void changeCoursePrerequisites() {
+        System.out.println("Enter course Name");
+        String courseName = ScannerWrapper.getInstance().next();
+        if(checkCourseExistence(courseName)) {
+            Course course = searchForCourse(courseName);
+            System.out.println("Enter course Prerequisites");
+            ArrayList<Course> prerequisites = addCoursePrerequisites();
+            courseList.add(new Course(courseName, course.getCourseNumber(), course.getPresentationDay(), course.getPresentationTime(), course.getCourseProfessor(), course.getCourseStudentList(), prerequisites));
+            courseList.remove(new Course(courseName, course.getCourseNumber(), course.getPresentationDay(), course.getPresentationTime(), course.getCourseProfessor(), course.getCourseStudentList(), course.getPrerequisites()));
+            System.out.println("Course " + courseName + "'s prerequisites were successfully added");
+        }
     }
 
     private void changeCourseNumber() {
+        System.out.println("Enter course Name");
+        String courseName = ScannerWrapper.getInstance().next();
+        if(checkCourseExistence(courseName)) {
+            Course course = searchForCourse(courseName);
+            System.out.println("Enter course new number");
+            String number = ScannerWrapper.getInstance().next();
+            courseList.add(new Course(courseName, number, course.getPresentationDay(), course.getPresentationTime(), course.getCourseProfessor(), course.getCourseStudentList(), course.getPrerequisites()));
+            courseList.remove(new Course(courseName, course.getCourseNumber(), course.getPresentationDay(), course.getPresentationTime(), course.getCourseProfessor(), course.getCourseStudentList(), course.getPrerequisites()));
+            System.out.println("Course " + courseName + "'s number were successfully added");
+        }
     }
 
     private void changeCourseName() {
+        System.out.println("Enter course Name");
+        String courseName = ScannerWrapper.getInstance().next();
+        if(checkCourseExistence(courseName)) {
+            Course course = searchForCourse(courseName);
+            System.out.println("Enter course new number");
+            String name = ScannerWrapper.getInstance().next();
+            courseList.add(new Course(name, course.getCourseNumber(), course.getPresentationDay(), course.getPresentationTime(), course.getCourseProfessor(), course.getCourseStudentList(), course.getPrerequisites()));
+            courseList.remove(new Course(courseName, course.getCourseNumber(), course.getPresentationDay(), course.getPresentationTime(), course.getCourseProfessor(), course.getCourseStudentList(), course.getPrerequisites()));
+            System.out.println("Course " + courseName + "'s name were successfully added");
+        }
+    }
+
+    private boolean checkCourseExistence(String name){
+        return searchForCourse(name) != null;
     }
 
     private void changeCourseProfessor() {
