@@ -8,6 +8,30 @@ public class CourseManager {
     private ArrayList<Student> studentList;
     private ArrayList<Professor> professorList;
 
+    public ArrayList<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(ArrayList<Course> courseList) {
+        this.courseList = courseList;
+    }
+
+    public ArrayList<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(ArrayList<Student> studentList) {
+        this.studentList = studentList;
+    }
+
+    public ArrayList<Professor> getProfessorList() {
+        return professorList;
+    }
+
+    public void setProfessorList(ArrayList<Professor> professorList) {
+        this.professorList = professorList;
+    }
+
     private Course searchForCourse(String courseName){
         for(Course aCourse : courseList){
             if(aCourse.getCourseName().equals(courseName)){
@@ -105,7 +129,6 @@ public class CourseManager {
         }
     }
 
-    /* todo
     public void changeCourseFields(int userIndex) {
         switch(userIndex){
             case 1:
@@ -117,10 +140,42 @@ public class CourseManager {
             case 3:
                 changeCoursePrerequisites();
                 break;
+            case 4:
+                changeCoursePresentationFields();
+                break;
+            case 5:
+                changeCourseStudents();
+                break;
+            case 6:
+                changeCourseProfessor();
+                break;
             default:
                 break;
         }
     }
 
-     */
+    private void changeCourseStudents() {
+    }
+
+    private void changeCoursePresentationFields() {
+    }
+
+    private void changeCoursePrerequisites() {
+    }
+
+    private void changeCourseNumber() {
+    }
+
+    private void changeCourseName() {
+    }
+
+    private void changeCourseProfessor() {
+        System.out.println("Enter course name you wish to apply a new professor to");
+        String courseName = ScannerWrapper.getInstance().next();
+        System.out.println("Enter new professor name for this course");
+        String professorName = ScannerWrapper.getInstance().next();
+        if(searchForProfessor(professorName) != null || searchForCourse(courseName) != null){
+            searchForCourse(courseName).setCourseProfessor(searchForProfessor(professorName));
+        }
+    }
 }
