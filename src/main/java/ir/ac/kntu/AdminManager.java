@@ -9,12 +9,12 @@ public class AdminManager {
         this.adminList = adminList;
     }
 
-    public boolean adminChecker(Admin admin){
+    public Admin adminChecker(Admin admin){
         for (Admin anAdmin : adminList) {
             if(anAdmin.getId().equals(admin.getId()) && anAdmin.getPassword().equals(admin.getPassword())){
-                return true;
+                return anAdmin;
             }
         }
-        return false;
+        return null;
     }
 }

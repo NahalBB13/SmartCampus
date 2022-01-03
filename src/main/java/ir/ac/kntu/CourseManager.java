@@ -235,4 +235,61 @@ public class CourseManager {
             searchForCourse(courseName).setCourseProfessor(searchForProfessor(professorName));
         }
     }
+
+    public Course viewWithdrawals() {
+        System.out.println("Enter course name");
+        String courseName = ScannerWrapper.getInstance().next();
+        return searchForCourse(courseName);
+    }
+
+    public void addCourseForStudent(Student student) {
+        System.out.println("Enter the name of courses you wish to add for the semester(Type EXIT to finish)");
+        String courseName = ScannerWrapper.getInstance().next();
+        while(searchForCourse(courseName) != null && !courseName.equals("EXIT")){
+            // todo 1.search for prerequisites 2.search for time complications 3.search if this course was taken with another prof 4.check for 20
+            if(prerequisiteChecker(searchForCourse(courseName), student) && timeAndDateChecker(searchForCourse(courseName), student) && professorChecker(searchForCourse(courseName), student) &&
+                    studentCapacityChecker(student) && courseCapacityChecker(Objects.requireNonNull(searchForCourse(courseName)))){
+                System.out.println("This course was successfully added!");
+                System.out.println("Enter the name of courses you wish to add for the semester(Type EXIT to finish)");
+                courseName = ScannerWrapper.getInstance().next();
+            } else{
+                System.out.println("This course could not be added, try again");
+            }
+        }
+    }
+
+    private boolean professorChecker(Course course, Student student) {
+        for(Course aCourse : student.getSelectedCourseList()){
+            if(aCourse.getCourseName().equals(course.getCourseName())){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean courseCapacityChecker(Course course) {
+        return course.getCourseStudentList().size() <= 20;
+    }
+
+    private boolean studentCapacityChecker(Student student) {
+        return student.courseAdmissibility(student.getSelectedCourseList());
+    }
+
+    private boolean timeAndDateChecker(Course course, Student student) {
+        for(Course aCourse : student.getSelectedCourseList()){
+            if(aCourse.getPresentationDay().equals(course.getPresentationDay()) && aCourse.getPresentationTime().equals(course.getPresentationTime())){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean prerequisiteChecker(Course course, Student student) {
+        for(Course aCourse: student.getPassedCourses().keySet()) {
+            if(course.getPrerequisites().contains(aCourse)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -23,7 +23,7 @@ public class Menu {
         System.out.print("\r\nPlease select your choice: ");
     }
 
-    public static void studentMenu(String storeType){
+    public static void studentMenu(){
         System.out.println("***********************************");
         System.out.println("1-Add courses for the new semester");
         System.out.println("2-view you last year's courses and average score");
@@ -74,7 +74,6 @@ public class Menu {
         System.out.println("***********************************");
         System.out.println("1-change " + staffType + "'s name");
         System.out.println("2-change " + staffType + "'s number");
-        System.out.println("2-change " + staffType + "'s password");
         System.out.println("3-Exit field adjustment menu");
         System.out.println("***********************************");
         System.out.print("\r\nPlease select your choice: ");

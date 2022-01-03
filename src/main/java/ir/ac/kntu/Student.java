@@ -9,14 +9,22 @@ public class Student {
     private String studentPass;
     private ArrayList<Course> selectedCourseList;
     private HashMap<Course, Double> passedCourses;
+    private ArrayList<Course> withdrawalList;
 
     public Student(String studentFullName, String studentNumber, String studentPass,
-                   ArrayList<Course> selectedCourseList, HashMap<Course, Double> passedCourses){
+                   ArrayList<Course> selectedCourseList, HashMap<Course, Double> passedCourses,
+                   ArrayList<Course> withdrawalList){
         this.studentFullName = studentFullName;
         this.studentNumber = studentNumber;
         this.studentPass = studentPass;
         this.selectedCourseList = selectedCourseList;
         this.passedCourses = passedCourses;
+        this.withdrawalList = withdrawalList;
+    }
+
+    public Student(String id, String password) {
+        this.studentFullName = id;
+        this.studentNumber = password;
     }
 
     public String getStudentFullName() {
@@ -47,6 +55,10 @@ public class Student {
         return selectedCourseList;
     }
 
+    public ArrayList<Course> getWithdrawalList() {
+        return withdrawalList;
+    }
+
     public void setSelectedCourseList(ArrayList<Course> selectedCourseList) {
         this.selectedCourseList = selectedCourseList;
     }
@@ -57,6 +69,10 @@ public class Student {
 
     public void setPassedCourses(HashMap<Course, Double> passedCourses) {
         this.passedCourses = passedCourses;
+    }
+
+    public void setWithdrawalList(ArrayList<Course> withdrawalList) {
+        this.withdrawalList = withdrawalList;
     }
 
     public boolean courseAdmissibility(ArrayList<Course> selectedCourseList){
@@ -85,7 +101,7 @@ public class Student {
         }
     }
 
-    public void showPassedCourses(HashMap<String, Double> passedCourses){
+    public void showPassedCourses(HashMap<Course, Double> passedCourses){
         System.out.println("your courses: \n" + passedCourses.toString());
         System.out.println("Your Average score: " + getAverageScore());
     }
@@ -98,5 +114,11 @@ public class Student {
             sum = sum + passedCourses.get(i);
         }
         return sum/length;
+    }
+
+    public void addWithdrawalRequest() {
+        System.out.println("course name you wish to withdraw from:");
+        String courseName = ScannerWrapper.getInstance().next();
+        withdrawalList.add(new Course(courseName));
     }
 }

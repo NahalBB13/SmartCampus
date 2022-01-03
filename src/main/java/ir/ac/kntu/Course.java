@@ -24,6 +24,10 @@ public class Course {
         this.prerequisites = prerequisites;
     }
 
+    public Course(String courseName) {
+        this.courseName = courseName;
+    }
+
     public String getCourseName() {
         return courseName;
     }
@@ -83,4 +87,5 @@ public class Course {
     public boolean checkProfName(String professorName){
         return professorName.equals(courseProfessor.getProfessorName());
     }
+
 }

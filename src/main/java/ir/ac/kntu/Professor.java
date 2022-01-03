@@ -17,6 +17,11 @@ public class Professor {
         this.professorCourseList = professorCourseList;
     }
 
+    public Professor(String id, String password) {
+        this.professorName = id;
+        this.professorNumber = password;
+    }
+
     public String getProfessorName() {
         return professorName;
     }
@@ -49,7 +54,7 @@ public class Professor {
         this.professorCourseList = professorCourseList;
     }
 
-    private void weeklyProfessorSchedule(ArrayList<Course> professorCourseList){
+    public void weeklyProfessorSchedule(ArrayList<Course> professorCourseList){
         System.out.println("Your Classes on Saturday");
         sortCourseByDay(professorCourseList, "Saturday");
 
@@ -71,13 +76,13 @@ public class Professor {
         }
     }
 
-    private void displayStudents(ArrayList<Course> professorCourseList){
-        for(Course aCourse : professorCourseList){
-            System.out.println("Your Students in class " + aCourse.getCourseName() + aCourse.getCourseStudentList().toString());
-        }
-    }
-
-    private void setStudentScore(String studentName, String courseName, double score, ArrayList<Course> professorCourseList){
+    public void setStudentScore(ArrayList<Course> professorCourseList){
+        System.out.println("Enter Student Name");
+        String studentName  = ScannerWrapper.getInstance().next();
+        System.out.println("Enter Course Name");
+        String courseName = ScannerWrapper.getInstance().next();
+        System.out.println("Enter score");
+        double score = Double.parseDouble(ScannerWrapper.getInstance().next());
         for(Course aCourse : professorCourseList){
             if(courseName.equals(aCourse.getCourseName())){
                 setScore(Objects.requireNonNull(searchForStudent(aCourse, studentName)).getPassedCourses(), aCourse.getCourseName(), score);
@@ -101,5 +106,11 @@ public class Professor {
             }
         }
         return null;
+    }
+
+    public void viewStudents() {
+        for (Course course:getProfessorCourseList()) {
+            System.out.println(course + " = " + course.getCourseStudentList() + "\n");
+        }
     }
 }
