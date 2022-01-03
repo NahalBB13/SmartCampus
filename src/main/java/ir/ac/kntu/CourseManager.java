@@ -153,7 +153,7 @@ public class CourseManager {
                 break;
         }
     }
-
+/*
     private void changeCourseStudents() {
     }
 
@@ -169,6 +169,8 @@ public class CourseManager {
     private void changeCourseName() {
     }
 
+
+ */
     private void changeCourseProfessor() {
         System.out.println("Enter course name you wish to apply a new professor to");
         String courseName = ScannerWrapper.getInstance().next();
