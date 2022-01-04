@@ -76,7 +76,7 @@ public class CourseManager {
         System.out.println("Enter Student names you wish to add (Type EXIT when finished)");
         String studentName = ScannerWrapper.getInstance().next();
         ArrayList<Student> studentList = new ArrayList<>();
-        while(searchForStudent(studentName) != null || studentName.equals("EXIT")){
+        while(searchForStudent(studentName) != null || !studentName.equals("EXIT")){
             studentList.add(searchForStudent(studentName));
             System.out.println("Student "+ studentName + "was added to list");
             System.out.println("add Student names you wish to add (Type EXIT when finished)");
@@ -92,7 +92,7 @@ public class CourseManager {
         if(searchForPrerequisites(courseName) != null){
             return searchForPrerequisites(courseName);
         } else{
-            while(searchForCourse(courseName) != null || courseName.equals("EXIT")){
+            while(searchForCourse(courseName) != null || !courseName.equals("EXIT")){
                 prerequisitesList.add(searchForCourse(courseName));
                 System.out.println("Course " + courseName + " was added as a prerequisite to this course");
                 System.out.println("add course names you wish to add (Type EXIT when finished)");
@@ -105,7 +105,7 @@ public class CourseManager {
     public void addCourse(ArrayList<Course> courseList){
         System.out.println("Enter course Name");
         String courseName = ScannerWrapper.getInstance().next();
-        if(checkCourseExistence(courseName)){
+        if(!checkCourseExistence(courseName)){
             System.out.println("Enter Course number");
             String courseNumber = ScannerWrapper.getInstance().next();
             System.out.println("Enter course presentation day");
@@ -121,6 +121,8 @@ public class CourseManager {
             ArrayList<Course> prerequisitesList = addCoursePrerequisites();
             courseList.add(new Course(courseName, courseNumber, presentationDay, presentationTime, professor, studentList, prerequisitesList));
             System.out.println("Course " + courseName + " Was successfully added");
+        } else{
+            System.out.println("this course already exists");
         }
     }
 
@@ -155,7 +157,10 @@ public class CourseManager {
             case 6:
                 changeCourseProfessor();
                 break;
+            case 7:
+                break;
             default:
+                System.out.println("Invalid Choice!");
                 break;
         }
     }

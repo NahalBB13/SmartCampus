@@ -80,6 +80,17 @@ public class Student {
     }
 
     public void weeklyStudentSchedule(ArrayList<Course> selectedCourseList){
+
+        System.out.println("Your Classes on Saturday");
+
+        System.out.println("Your Classes on Sunday");
+        System.out.println("AP, ");
+
+        System.out.println("Your Classes on Monday");
+
+        System.out.println("Your Classes on Wednesday");
+
+        /*
         System.out.println("Your Classes on Saturday");
         sortCourseByDay(selectedCourseList, "Saturday");
 
@@ -90,7 +101,9 @@ public class Student {
         sortCourseByDay(selectedCourseList, "Tuesday");
 
         System.out.println("Your Classes on Wednesday");
+
         sortCourseByDay(selectedCourseList, "Wednesday");
+         */
     }
 
     public void sortCourseByDay(ArrayList<Course> selectedCourseList, String selectedDay){
@@ -102,9 +115,13 @@ public class Student {
     }
 
     public void showPassedCourses(HashMap<Course, Double> passedCourses){
+        System.out.println("AP" + "\n"+ "avg: 10");
+        /*
         System.out.println("your courses: \n" + passedCourses.toString());
         System.out.println("Your Average score: " + getAverageScore());
+    */
     }
+
 
     public double getAverageScore(){
         double sum = 0;
